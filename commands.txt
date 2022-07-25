@@ -1,0 +1,60 @@
+Detail the use cases of the below commands with some examples.
+
+sort
+>> sorts contents of input in numeric or alphabetic order, printing the results to standard output
++ e.g. cat commands.txt | sort
++ e.g. ls | sort -r
+    reverse order
+
+uniq
+>> removes/reports adjacent repeated lines (will only leave unique lines)
++ e.g. "cat duplicates.txt | uniq"
++ e.g. "cat duplicates.txt | uniq -c"
+    count number of repeats
+
+wc
+>> count number of lines, words, characters, in a file or files
++ e.g. "wc duplicates.txt"
++ e.g. "wc -l duplicates.txt commands.txt"
+    number of lines only in each file
+
+awk
+>> scripting language for text processing, pattern scanning, data extraction, and data reporting
++ e.g. awk ‘{print $2}’ grades 
+    Prints second item (space separated) from each row of grades file
++ e.g. awk ‘{split($0, a, “:”); print a[2]}’ grades.txt > grades-only.txt
+    Prints second item (colon separated) from each row of grades file
+
+sed
+>> Executes operations line by line (e.g. replace all instances of one word with another)
++ e.g. sed ‘s/<word we want to replace>/<replacement word>’ <file>
+    Outputs file content with replacements
++ e.g. sed -n ‘s/<word we want to replace>/<replacement word>/p’ <file>
+    Print out only lines in file which the replacement applied to
+
+cut
+>> allows you to cut out sections of a specified file or piped data and print the result to standard output; the command cuts parts of a line by field, delimiter, byte position, and character
++ e.g. cut -b 1 sample.txt
+    Extract the first byte from each input line.
++ e.g. cut -f 2 employees.txt
+    Extract 2nd field from each line in employees.txt
+
+read
+>> allows you to read contents of a line into a variable or multiple variables
++ e.g. read
+       <input>
+       echo $REPLY
+
+       Outputs your input; <input> in stored in a REPLY variable
++ e.g. read var1 var2 var3
+       <input input input>
+       echo "[$var1] [$var2] [$var3]"  
+
+       sets each variable to one input word correspondingly until the last word (which gets the rest)
+
+jq
+>> transform JSON data into a more readable format and print it to the standard output; access an object property
++ e.g. jq '.workers.name' employee.json
+    grabs the name attribute of each worker
++ e.g. jq '.' employee.json 
+    organize data 
